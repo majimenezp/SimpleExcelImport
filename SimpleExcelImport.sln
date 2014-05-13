@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExcelImport", "SimpleExcelImport\SimpleExcelImport.csproj", "{B64234A1-5B22-4EB1-8D0F-1EDB67AA8342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{9AB98090-47A9-4515-A1E7-3DC4036188BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B64234A1-5B22-4EB1-8D0F-1EDB67AA8342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B64234A1-5B22-4EB1-8D0F-1EDB67AA8342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B64234A1-5B22-4EB1-8D0F-1EDB67AA8342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B64234A1-5B22-4EB1-8D0F-1EDB67AA8342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB98090-47A9-4515-A1E7-3DC4036188BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB98090-47A9-4515-A1E7-3DC4036188BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB98090-47A9-4515-A1E7-3DC4036188BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB98090-47A9-4515-A1E7-3DC4036188BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
