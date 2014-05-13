@@ -43,7 +43,7 @@ namespace SimpleExcelImport
             Type objType=typeof(T);
             for (int j = 0; j < columns.Count; j++)
             {
-                ICell cell=row.GetCell(columns[j].ColumnOrder);
+                ICell cell=row.GetCell(columns[j].ColumnOrder-1);
 
                 
                 switch (columns[j].PropType.Name.ToLowerInvariant())
@@ -150,6 +150,10 @@ namespace SimpleExcelImport
         private string ExtractStringFromCell(ICell cell)
         {
             string value=string.Empty;
+            if (cell == null)
+            {
+                return string.Empty;
+            }
             switch (cell.CellType)
             {
                 case CellType.Blank:
