@@ -40,13 +40,13 @@ namespace SimpleExcelImport
         private T GetDataToObject<T>(IRow row, List<Column> columns)
         {
             T result = (T)Activator.CreateInstance(typeof(T));
-            Type objType=typeof(T);
+            Type objType = typeof(T);
             for (int j = 0; j < columns.Count; j++)
             {
-                ICell cell=row.GetCell(columns[j].ColumnOrder-1);
+                ICell cell = row.GetCell(columns[j].ColumnOrder - 1);
+                string colTypeDesc = columns[j].PropType.Name.ToLowerInvariant();
 
-                
-                switch (columns[j].PropType.Name.ToLowerInvariant())
+                switch (colTypeDesc)
                 {
                     case "string":
                         string tmpStr = ExtractStringFromCell(cell);
@@ -62,8 +62,20 @@ namespace SimpleExcelImport
                     case "decimal":
                     case "long":
                     case "double":
-                        double tmpDbl=ExtractNumericFromCell(cell);
-                        AssignValue(objType, columns[j].PropName, result, (object)tmpDbl);
+                    case "single":
+                        double tmpDbl = ExtractNumericFromCell(cell);
+                        if (colTypeDesc == "float" || colTypeDesc == "single")
+                        {
+                            AssignValue(objType, columns[j].PropName, result, Convert.ToSingle(tmpDbl));
+                        }
+                        else if (colTypeDesc == "decimal")
+                        {
+                            AssignValue(objType, columns[j].PropName, result, Convert.ToDecimal(tmpDbl));
+                        }
+                        else
+                        {
+                            AssignValue(objType, columns[j].PropName, result, (object)tmpDbl);
+                        }
                         break;
                     case "boolean":
                     case "bool":
@@ -101,7 +113,7 @@ namespace SimpleExcelImport
 
         private double ExtractNumericFromCell(ICell cell)
         {
-            double value=0;
+            double value = 0;
             switch (cell.CellType)
             {
                 case CellType.Blank:
@@ -119,7 +131,7 @@ namespace SimpleExcelImport
                     value = cell.NumericCellValue;
                     break;
                 case CellType.String:
-                    double.TryParse(cell.StringCellValue,out value);
+                    double.TryParse(cell.StringCellValue, out value);
                     break;
             }
             return value;
@@ -149,7 +161,7 @@ namespace SimpleExcelImport
 
         private string ExtractStringFromCell(ICell cell)
         {
-            string value=string.Empty;
+            string value = string.Empty;
             if (cell == null)
             {
                 return string.Empty;
@@ -164,7 +176,7 @@ namespace SimpleExcelImport
                     value = cell.BooleanCellValue.ToString();
                     break;
                 case CellType.Error:
-                    value = "Error Code:"+cell.ErrorCellValue.ToString();
+                    value = "Error Code:" + cell.ErrorCellValue.ToString();
                     break;
                 case CellType.Formula:
                     value = cell.CellFormula;
@@ -179,7 +191,7 @@ namespace SimpleExcelImport
             return value;
         }
 
-        private void AssignValue(Type objType,string propertyName, object instance,object data)
+        private void AssignValue(Type objType, string propertyName, object instance, object data)
         {
             objType.InvokeMember(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty, Type.DefaultBinder, (object)instance, new object[] { data });
         }
