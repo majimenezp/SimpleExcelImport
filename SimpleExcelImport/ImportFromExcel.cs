@@ -31,7 +31,8 @@ namespace SimpleExcelImport
         }
         public bool LoadXlsx(byte[] data)
         {
-            return false;
+            excelReader = new XLSXReader(data);
+            return true;
         }
         /// <summary>
         /// Read a excel sheet from the loaded file

@@ -21,5 +21,17 @@ namespace UnitTests
             Assert.IsTrue(output.Count > 0);
 
         }
+        [TestMethod]
+        public void ReadFileXlsx()
+        {
+            string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            var data = File.ReadAllBytes(Path.Combine(path, "testXlsx.xlsx"));
+            ImportFromExcel import = new ImportFromExcel();
+            import.LoadXlsx(data);
+            List<Producto> output = import.ExcelToList<Producto>(0, 1);
+            Assert.IsTrue(output.Count > 0);
+
+        }
     }
 }
