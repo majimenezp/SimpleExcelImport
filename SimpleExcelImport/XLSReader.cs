@@ -11,13 +11,19 @@ namespace SimpleExcelImport
     internal class XLSReader : BaseExcelReader, IExcelReader
     {
         MemoryStream mem;
+        private FileStream fileStr;
         private HSSFWorkbook document;
         private ISheet sheet;
         public XLSReader(byte[] data)
         {
             mem = new MemoryStream(data);
             document = new HSSFWorkbook(mem);
+        }
 
+        public XLSReader(string filePath)
+        {
+            fileStr = new FileStream(filePath, FileMode.Open);
+            document = new HSSFWorkbook(fileStr);
         }
 
 

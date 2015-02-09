@@ -38,10 +38,21 @@ Read all bytes from your excel files and read it with SimpleExcelImport to a Lis
   ImportFromExcel import = new ImportFromExcel();
   import.LoadXls(data);
   //first parameter it's the sheet number in the excel workbook
-  //second paramter it's the number of rows to skip at the start(we have an header in the file)
-  List<Product> output=import.ExcelToList<Producto>(0,1);
- ```
+  //second parameter it's the number of rows to skip at the start(we have an header in the file)
+  List<Product> output=import.ExcelToList<Product>(0,1);
+  ```
+  
+Do you need read a excel file in Open Xml format(Xlsx excel 2007), you only need to change the method to load the file:  
+``` csharp
+  var data=File.ReadAllBytes(@"C:\products.xlsx"));
+  ImportFromExcel import = new ImportFromExcel();
+  import.LoadXlsx(data);
+  //first parameter it's the sheet number in the excel workbook
+  //second parameter it's the number of rows to skip at the start(we have an header in the file)
+  List<Product> output=import.ExcelToList<Product>(0,1);
+ ``` 
+ Also added method to load directly the file only with path(no need to load in memory the file in order to be read by the library).
  
- TODO:
- Read also XLSX file format.
+ 
+ 
  

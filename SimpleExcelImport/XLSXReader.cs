@@ -19,6 +19,12 @@ namespace SimpleExcelImport
             mem = new MemoryStream(data);
             document = new XSSFWorkbook(mem);
         }
+
+        public XLSXReader(string filePath)
+        {
+            mem = null;
+            document = new XSSFWorkbook(filePath);
+        }
         public List<T> ReadRows<T>(int sheetNumber, int rowsToSkip)
         {
             List<T> result = new List<T>();

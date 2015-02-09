@@ -34,6 +34,17 @@ namespace SimpleExcelImport
             excelReader = new XLSXReader(data);
             return true;
         }
+
+        public bool LoadXls(string filePath)
+        {
+            excelReader = new XLSReader(filePath);
+            return true;
+        }
+        public bool LoadXlsx(string filePath)
+        {
+            excelReader = new XLSXReader(filePath);
+            return true;
+        }
         /// <summary>
         /// Read a excel sheet from the loaded file
         /// </summary>
