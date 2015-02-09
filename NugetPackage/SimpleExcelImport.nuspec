@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SimpleExcelImport</id>
+	<title>SimpleExcelImport</title>
+    <version>0.0.1.3</version>
+    <authors>majimenezp</authors>
+    <owners>majimenezp</owners>
+	<projectUrl>https://github.com/majimenezp/SimpleExcelImport</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library to fast import an excel file to an list of objects</description>
+	<summary>Library to help to import an excel file to a list of object in a simple way</summary>
+	<language>es-mx</language>
+    <releaseNotes>Added method to read a file directly</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>excel</tags>
+    <dependencies>
+      <dependency id="NPOI"  version="2.0.6"/>
+    </dependencies>
+  </metadata>
+</package>
