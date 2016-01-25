@@ -34,7 +34,7 @@ namespace SimpleExcelImport
             sheet = document.GetSheetAt(sheetNumber);
             int firstRow = sheet.FirstRowNum;
             int lastRow = sheet.LastRowNum;
-            for (int i = sheet.FirstRowNum + rowsToSkip; i < lastRow; i++)
+            for (int i = sheet.FirstRowNum + rowsToSkip; i <= lastRow; i++)
             {
                 IRow row = sheet.GetRow(i);
                 T objectInstance = GetDataToObject<T>(row, columns);

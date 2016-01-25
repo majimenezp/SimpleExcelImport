@@ -18,7 +18,7 @@ namespace UnitTests
             ImportFromExcel import = new ImportFromExcel();
             import.LoadXls(data);
             List<Producto> output=import.ExcelToList<Producto>(0,1);
-            Assert.IsTrue(output.Count > 0);
+            Assert.IsTrue(output.Count == 19);
 
         }
         [TestMethod]
@@ -30,7 +30,7 @@ namespace UnitTests
             ImportFromExcel import = new ImportFromExcel();
             import.LoadXlsx(data);
             List<Producto> output = import.ExcelToList<Producto>(0, 1);
-            Assert.IsTrue(output.Count > 0);
+            Assert.IsTrue(output.Count == 18);
 
         }
     }
